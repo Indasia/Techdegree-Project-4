@@ -2,28 +2,11 @@
  * Project 4 - OOP Game App
  * app.js */
 
-// const phrase = new Phrase("Life is like a box of chocolates");
-// console.log(`Phrase - phrase: ${phrase.phrase}`);
-
-/*
-const phrase = new Phrase();
-const game = new Game();
-game.phrases.forEach((phrase, index) => {
-    console.log(`Phrase ${index} - phrase: ${phrase.phrase}`);
+let game;
+// add an event listener (click) to the element
+document.getElementById("btn__reset").addEventListener("click", function () {
+    // once clicked, instantiate a new Game object
+    game = new Game();
+    // also, call the startGame method on the game object
+    game.startGame();
 });
-*/
-
-/*
-const logPhrase = (phrase) => {
-    console.log(`Phrase - phrase: `, phrase.phrase);
-};
-const game = new Game();
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-logPhrase(game.getRandomPhrase());
-*/
-
-const game = new Game();
-game.getRandomPhrase().addPhraseToDisplay();
