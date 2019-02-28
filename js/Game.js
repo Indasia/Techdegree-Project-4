@@ -32,6 +32,7 @@ class Game {
 
     // begin the game by selecting a random phrase and displaying it to the user 
     startGame() {
+        this.resetGame();
         // hide the start screen overlay
         document.getElementById("overlay").style.display = "none";
         // select a Phrase object from the Game object’s array of phrases
@@ -58,8 +59,10 @@ class Game {
             game.activePhrase.showMatchedLetter(buttonLetter);
             // and call the checkForWin method
             this.checkForWin(); 
-            
-            }
+        }
+        if (this.checkForWin() === true) {
+            this.gameOver(true);
+        }
     }
 
     // removes a life from the scoreboard, by replacing one the liveHeart.png images with a lostHeart.png image
@@ -67,12 +70,11 @@ class Game {
         // increments the missed property    
         this.missed++;
         // select all scoreboard heart images (tries/lives)
-        const hearts = document.querySelectorAll("#scoreboard .tries");
-        //
-        const img = hearts[hearts.length - this.missed].children[0];
-        img.src = "images/lostHeart.png";
+        const hearts = document.querySelectorAll(".tries img");
+        // take away one heart image
+        hearts[this.missed - 1].src = 'images/lostHeart.png';
         // if the user misses 5 times
-        if (this.missed == 5) {
+        if (this.missed === 5) {
             // the game is over
             this.gameOver(false);
         }   
@@ -81,6 +83,7 @@ class Game {
     // checks to see if the player has revealed all of the letters in the active phrase.
     checkForWin(){
         const hidden = document.getElementsByClassName("hide");
+        // if any of the phrase letters are still hidden
         if (hidden.length === 0) {
             return true;
         } else {
@@ -95,11 +98,11 @@ class Game {
         // select the overlay element
         const overlay = document.getElementById("overlay");
         // change the overlay display to block, the original display
-        overlay.style.display = "block";
+        overlay.style.display = "flex";
         // if the game is won
         if (gameWon) {
             // show a message and add a win CSS class
-            gameOverMessage.textContent = "We have a winner!";
+            gameOverMessage.textContent = "Looks like we have a winner!";
             overlay.classList.add("win");
         } else {
             // otherwise, show a message and ass a lose CSS class
@@ -108,4 +111,16 @@ class Game {
         }
     } 
 
-}
+    resetGame() { 
+        const ul = document.querySelector("#phrase ul");
+        ul.innerHTML = "";
+        this.missed = 0;
+
+        let keys = document.getElementsByClassName("key");
+        for (let key of keys) {
+            key.disabled = false;
+            key.classList.remove("wrong", "chosen");
+        }
+        
+        }
+    }
