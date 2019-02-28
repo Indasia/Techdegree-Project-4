@@ -8,7 +8,6 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
 
-
     // adds letter placeholders to the display and displays phrase on game board
     addPhraseToDisplay(){
         // select the ul element
@@ -31,26 +30,26 @@ class Phrase {
         });
         
     }
+
     // Checks to see if the letter selected by the player matches a letter in the phrase.
     checkLetter(letter) {
-        // if the phrase includes a certain letter
-        if (this.phrase.includes(letter)) {
-            return true;
-        } else {
-            return false;
-         }
+        // returns the matching letter
+        return this.phrase.includes(letter);
      }
  
-/*    `showMatchedLetter()`: Reveals the letter(s) on the board that matches the
-player's selection. To reveal the matching letter(s), select all of the letter DOM
-elements that have a CSS class name that matches the selected letter and
-replace each selected element's `hide` CSS class with the `show` CSS class.
-*/  /*showMatchedLetter(letter) {
-        const gameboardLetters = document.querySelectorAll(".key");
-        for (let i = 0; i < gameboardLetters.length; i++) {
-            if (gameboardLetters[i].textContent === letter) {
-                gameboardLetters.style.display = "show";
+    // reveals the letter(s) on the board that matches the player's selection
+    showMatchedLetter(letter) {
+            // select all of the letter DOM elements
+            const gameboardLetters = document.querySelectorAll(".letter");
+            // loops through all of the letters
+            for (let i = 0; i < gameboardLetters.length; i++) {
+                // if the gameboardLetters text equals the letter
+                if (gameboardLetters[i].innerText == letter) {
+                    // remove the element's hide CSS class
+                    gameboardLetters[i].classList.remove("hide");
+                    // add the element's show CSS class
+                    gameboardLetters[i].classList.add("show");
+                }
             }
-        }
-}*/
+    }
 }        
