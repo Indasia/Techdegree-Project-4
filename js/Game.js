@@ -49,18 +49,20 @@ class Game {
         // if the phrase does not match the clicked letter
         if (!game.activePhrase.checkLetter(buttonLetter)) { 
             // set the button class name to equal "wrong"
-            button.className = "wrong";
+            button.classList.add("wrong");
             // and call the removeLife method to remove a life
             this.removeLife();
         } else {
             // set the button class name to equal "chosen"
-            button.className = "chosen";
+            button.classList.add("chosen");
             // the phrase should match the clicked letter
             game.activePhrase.showMatchedLetter(buttonLetter);
             // and call the checkForWin method
             this.checkForWin(); 
         }
+        // if the checkForWin() method is true
         if (this.checkForWin() === true) {
+            // gameOver is true
             this.gameOver(true);
         }
     }
@@ -83,7 +85,7 @@ class Game {
     // checks to see if the player has revealed all of the letters in the active phrase.
     checkForWin(){
         const hidden = document.getElementsByClassName("hide");
-        // if any of the phrase letters are still hidden
+        // if any of the phrase letters are still hidden, return true or false
         if (hidden.length === 0) {
             return true;
         } else {
@@ -111,14 +113,24 @@ class Game {
         }
     } 
 
+    // after a game is completed, reset the gameboard
     resetGame() { 
+        // select the phrase UL elements
         const ul = document.querySelector("#phrase ul");
+        // set the innerHTML of the phrase UL elements to an empty string
         ul.innerHTML = "";
+        // set the amount of misses back to 0
         this.missed = 0;
-
+        // select the heart images, and for each image bring it back
+        let hearts = document.querySelectorAll('.tries img');
+        hearts.forEach(life => life.src = 'images/liveHeart.png')
+        // select all qwerty buttons
         let keys = document.getElementsByClassName("key");
+        // loop through all qwerty buttons
         for (let key of keys) {
+            // and enable the buttons again
             key.disabled = false;
+            // and remove the classes from the buttons that change their color
             key.classList.remove("wrong", "chosen");
         }
         

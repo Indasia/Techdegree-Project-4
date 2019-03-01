@@ -21,3 +21,22 @@ for (let key of keys) {
         game.handleInteraction(event.target);
     });
 }
+    
+// add an event listener, it listens for the moment the user presses down on a keyboard button
+document.addEventListener("keydown", function (event) {
+    // loop through all of the qwerty buttons
+    for (let i = 0; i < keys.length; i++) {
+            // if the buttons text content equals the button clicked
+        if (keys[i].textContent === event.key) {
+                // if the buttons class name contains wrong
+                if (keys[i].classList.contains('wrong')) {
+                    // prevent the the button from being used
+                    event.preventDefault();
+                } else {
+                    // otherwise call the handleInteraction method on game, 
+                    game.handleInteraction(keys[i]);
+                }
+            }
+        }
+    });
+

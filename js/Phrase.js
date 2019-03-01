@@ -41,7 +41,7 @@ class Phrase {
     showMatchedLetter(letter) {
             // select all of the letter DOM elements
             const gameboardLetters = document.querySelectorAll(".letter");
-            // loops through all of the letters
+            // loops through all of the letter DOM elements
             for (let i = 0; i < gameboardLetters.length; i++) {
                 // if the gameboardLetters text equals the letter
                 if (gameboardLetters[i].innerText == letter) {

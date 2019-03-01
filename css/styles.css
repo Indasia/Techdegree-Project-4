@@ -4,8 +4,8 @@
 /* Variables */
 
 :root {
-  --color-win: #78CF82;
-  --color-lose: #D94545;
+  --color-win: #c8d794;
+  --color-lose: #cc6e6e;
   --color-start: #5b85b7;
   --color-neutral: #445069;
   --color-neutral-light: #D2D2D2;
@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Courier New', monospace;
 }
 
 body {
@@ -53,7 +53,7 @@ button {
   color: var(--color-keys);
   font-size: var(--font-size-medium);
   background-color: var(--color-keys-light);
-  border-radius: 5px;
+  border-radius: 12px;
   -webkit-transition: var(--transition);
   -o-transition: var(--transition);
   transition: var(--transition);
@@ -81,12 +81,17 @@ button {
 
 #phrase ul li{
   margin-top: 15px;
+  /* disable the ability to highlight the LI letters */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #969e79;
 }
 
 
@@ -111,7 +116,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #fd776c;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -131,14 +136,14 @@ button {
 }
 
 .chosen {
-  background: #3a3f58;
+  background: #7b5a6d;
   border-radius: 5px;
   font-size: var(--font-size-medium);
   color: #FFFFFF;
 }
 
 .wrong {
-  background: #f7a964;
+  background: #cc6e6e;
   color: #FFFFFF;
 }
 
@@ -180,7 +185,7 @@ button {
 }
 
 .start {
-  background-color: #3a3f58;
+  background-color: #6d7b5a;
 }
 
 .start a {
